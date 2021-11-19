@@ -1,13 +1,23 @@
+html, body {
+    margin: 0 auto;
+}
 .app {
     display: grid;
+    height: 100px;
 }
 
 .app div {
     padding: 10px;
 }
 
+#app-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 p {
     white-space: nowrap;
+    width: 5px;
 }
 
 h4{
@@ -16,7 +26,13 @@ h4{
 
 .products {
     display: grid;
-    grid-template-columns: 50px;
+    grid-template-columns: 210px;
+}
+
+.each-product {
+    height: 350px;
+    width: 50px;
+    
 }
 
 button {

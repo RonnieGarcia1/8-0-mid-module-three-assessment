@@ -1,6 +1,6 @@
 import { Component } from "react";
 import "./App.css";
-import Form from "./components/Form";
+import Checkout from "./components/Checkout"
 import data from "./data/productData";
 import formatPrice from "./helpers/formatPrice";
 
@@ -10,7 +10,8 @@ class App extends Component{
     this.state = {
       productsArr: data,
       cart: [],
-      price: 0,
+      price: "",
+      productName:"",
       subtotal: 0,
       Tax: 0,
       Total: 0,
@@ -18,10 +19,7 @@ class App extends Component{
   }
 
   addItemToCart = (e) => {
-    this.setState({
-      cart: [ ...this.state.cart, { name: e.target.name, price: e.target.value },],
-    });
-
+    e.preventDefault();
   }
 
   render(){
@@ -29,9 +27,9 @@ class App extends Component{
     let productList = this.state.productsArr.map((list)=>{
       let { name, price, description, img } = list;
     
-      return(
+    return(
         <div className="products">
-          <div>
+          <div className="each-product">
             <h4>{ name }</h4>
             <p>Price: { formatPrice(price) }</p>
             <button onClick={()=>this.addItemToCart()}>Add To Cart</button>
@@ -43,7 +41,8 @@ class App extends Component{
     });
 
     return(
-      <div className="app" id="app-wrapper">
+    
+    <div className="app" id="app-wrapper">
         
         <div className="product-wrapper">
         <h2>My Garage Sale</h2>
@@ -51,14 +50,14 @@ class App extends Component{
         { productList }
         </div>
 
-        <div className="forms" id="form-section"> 
-        <Form />
+        <div className="cart" id="cart-forms"> 
+        <Checkout />
         </div>
     
-       </div>
+    </div>
     )
 
   }
 
-}
+};
 export default App;
