@@ -1,1 +1,26 @@
+.app {
+    text-align: center;
+    display: grid;
+}
 
+.app div {
+    padding: 10px;
+}
+
+p {
+    white-space: nowrap;
+}
+
+h4{
+    white-space: nowrap;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: 50px;
+}
+
+button {
+    white-space: nowrap;
+    margin: 5px
+}
