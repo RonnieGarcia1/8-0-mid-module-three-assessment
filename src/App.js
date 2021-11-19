@@ -9,8 +9,7 @@ class App extends Component{
     super();
     this.state = {
       productsArr: data,
-      productsList: [],
-      name: "",
+      cart: [],
       price: 0,
       subtotal: 0,
       Tax: 0,
@@ -18,45 +17,12 @@ class App extends Component{
     }
   }
 
-  addItemToCart = (list) => {
-    console.log(list)
+  addItemToCart = (e) => {
     this.setState({
-      price: this.state.price + list,
+      cart: [ ...this.state.cart, { name: e.target.name, price: e.target.value },],
     });
 
-
   }
-
-  firstName = (e) => {
-    e.preventDefault();
-    console.log("FirstName")
-  }
-
-  lastName = (e) => {
-    e.preventDefault();
-    console.log("LastName")
-  }
-
-  email = (e) => {
-    e.preventDefault();
-    console.log("Please enter a valid email")
-  }
-
-  creditCard = (e) => {
-    e.preventDefault();
-    console.log("Enter valid credit card")
-  }
-
-  zipCode = (e) => {
-    e.preventDefault();
-    console.log("enter a valid zip code")
-  }
-  
-  buyNow = (e) => {
-    e.preventDefault();
-    alert("you have submitted your order");
-  }
-
 
   render(){
 
@@ -76,14 +42,16 @@ class App extends Component{
       )
     });
 
-
     return(
-      <div className="app">
-      
-        <h3>My Garage Sale</h3>
+      <div className="app" id="app-wrapper">
+        
+        <div className="product-wrapper">
+        <h2>My Garage Sale</h2>
 
         { productList }
-        <div id="form-section"> 
+        </div>
+
+        <div className="forms" id="form-section"> 
         <Form />
         </div>
     
