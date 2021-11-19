@@ -10,6 +10,9 @@ class Form extends Component{
             
             <div className="cart">
             <h3>Cart</h3>
+            <ul>
+          <li> Baseball Glove: $19.99</li>
+        </ul>
             <h4>Subtotal</h4>
             <h4>Tax</h4>
             <h4>Total</h4>
@@ -17,7 +20,8 @@ class Form extends Component{
             <h2>Checkout</h2>
 
             <form id="checkout" onSubmit={this.props.buyNow}>
-            <label htmlFor="first-name">First Name</label><br />
+            <label htmlFor="first-name">First Name</label
+            ><br />
             <input 
                 onInput={this.props.firstName} 
                 value={this.props.firstName} 
@@ -25,7 +29,8 @@ class Form extends Component{
                 name="first-name" 
                 id="first-name" />
             <br />
-            <label htmlFor="last-name">Last Name</label><br />
+            <label htmlFor="last-name">Last Name</label>
+            <br />
             <input 
                 onInput={this.props.lastName} 
                 value={this.props.lastName}
@@ -33,7 +38,8 @@ class Form extends Component{
                 name="last-name" 
                 id="last-name" />
             <br />
-            <label htmlFor="email">Email</label><br />
+            <label htmlFor="email">Email</label>
+            <br />
             <input
                 onInput={this.props.email} 
                 value={this.props.email} 
@@ -41,7 +47,8 @@ class Form extends Component{
                 name="email" 
                 id="email" />
             <br />
-            <label htmlFor="credit-card">Credit Card</label><br /> 
+            <label htmlFor="credit-card">Credit Card</label>
+            <br /> 
             <input
                 onInput={this.props.creditCard} 
                 value={this.props.creditCard}
@@ -49,7 +56,8 @@ class Form extends Component{
                 name="credit-card" 
                 id="credit-card" />
                 <br />
-                <label htmlFor="zip-code">Zip Code</label><br /> 
+                <label htmlFor="zip-code">Zip Code</label>
+                <br /> 
             <input
                 onInput={this.props.zipCode} 
                 value={this.props.zipCode}
@@ -57,7 +65,7 @@ class Form extends Component{
                 name="zip-code" 
                 id="zip-code" />
                 <br />
-            <button type="submit">Buy Now</button>
+            <button onClick={()=>alert("Purchase complete")} input ="submit" type="submit">Buy Now</button>
           </form>
           </div>
 

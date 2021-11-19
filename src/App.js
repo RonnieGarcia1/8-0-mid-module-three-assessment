@@ -8,21 +8,21 @@ class App extends Component{
   constructor(){
     super();
     this.state = {
-      products: data,
+      productsArr: data,
+      productsList: [],
       name: "",
-      price: "",
+      price: 0,
       subtotal: 0,
       Tax: 0,
       Total: 0,
     }
   }
 
-  addItemToCart = (e) => {
-    e.preventDefault();
+  addItemToCart = (list) => {
+    console.log(list)
     this.setState({
-
-
-    })
+      price: this.state.price + list,
+    });
 
 
   }
@@ -54,19 +54,15 @@ class App extends Component{
   
   buyNow = (e) => {
     e.preventDefault();
-    console.log("you have submitted your order")
+    alert("you have submitted your order");
   }
 
 
   render(){
 
-    let productList = this.state.products.map((list)=>{
-      let { id, name, price, description, img } = list;
-      console.log(id);
-      console.log(name);
-      console.log(price);
-      console.log(img);
-      console.log(description);
+    let productList = this.state.productsArr.map((list)=>{
+      let { name, price, description, img } = list;
+    
       return(
         <div className="products">
           <div>
@@ -76,11 +72,6 @@ class App extends Component{
             <img src={img} alt="garage sale images" />
             <p>{ description }</p>
           </div>
-          <br />
-          <div></div>
-
-          
-
         </div>
       )
     });
@@ -88,14 +79,14 @@ class App extends Component{
 
     return(
       <div className="app">
-      <body>
+      
         <h3>My Garage Sale</h3>
 
         { productList }
         <div id="form-section"> 
         <Form />
         </div>
-       </body>
+    
        </div>
     )
 
