@@ -1,16 +1,10 @@
 import { Component } from "react";
-import Cart from "./Cart";
 
 class Checkout extends Component{
     render(){
         return(
             
             <div className="Checkout">
-            <Cart />
-            <h4>Subtotal</h4>
-            <h4>Tax</h4>
-            <h4>Total</h4>
-
             <h2>Checkout</h2>
 
             <form id="checkout" onSubmit={this.props.checkout}>

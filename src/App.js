@@ -8,37 +8,44 @@ class App extends Component{
   constructor(){
     super();
     this.state = {
-      productsArr: data,
       cart: [],
-      price: "",
-      productName:"",
       subtotal: 0,
       Tax: 0,
       Total: 0,
     }
   }
 
-  addItemToCart = (e) => {
-    e.preventDefault();
+  addItemToCart = (products) => {
+    let { price } = products; 
+    console.log(price)
+    this.setState({
+      cart: [ ...this.state.cart, products],
+      subtotal: this.state.subtotal + price,
+    })
   }
 
   render(){
 
-    let productList = this.state.productsArr.map((list)=>{
-      let { name, price, description, img } = list;
+    let productList = data.map((list)=>{
+      let { id, name, price, description, img } = list;
     
     return(
-        <div className="products">
+        <div key={ id } className="products">
           <div className="each-product">
             <h4>{ name }</h4>
             <p>Price: { formatPrice(price) }</p>
-            <button onClick={()=>this.addItemToCart()}>Add To Cart</button>
+            <button onClick={()=>this.addItemToCart(list)}>Add To Cart</button>
             <img src={img} alt="garage sale images" />
             <p>{ description }</p>
           </div>
         </div>
       )
     });
+
+    let cartElArr = this.state.cart.map((product)=>{
+      let {name, price} = product; 
+      return <li> { name }: ${ price }</li>      
+    })
 
     return(
     
@@ -49,10 +56,21 @@ class App extends Component{
 
         { productList }
         </div>
+        <div>
+          <h3>Cart</h3>
+          <ul>
+              { cartElArr }
+          </ul>
+          <h4>Subtotal: { formatPrice(this.state.subtotal) }</h4>
+          <h4>Tax: { formatPrice(this.state.subtotal*.05) }</h4>
+          <h4>Total: { formatPrice(this.state.subtotal*1.05) }</h4>
 
         <div className="cart" id="cart-forms"> 
-        <Checkout />
+          <Checkout />
         </div>
+        </div>
+
+        
     
     </div>
     )
